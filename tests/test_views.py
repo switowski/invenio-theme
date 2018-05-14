@@ -206,8 +206,8 @@ def test_authorized(base_app, params):
             'next': None,
         })
 
-        # handler should be return something
-        with pytest.raises(ValueError):
+        # handler should return something
+        with pytest.raises(TypeError):
             client.get(url_for(
                 'invenio_oauthclient.authorized',
                 remote_app='test_invalid',
