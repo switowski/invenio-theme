@@ -207,7 +207,8 @@ def test_authorized(base_app, params):
         })
 
         # handler should return something
-        with pytest.raises(TypeError):
+        # Flask>1.0 is throwing ValueError and Flask<1.0 TypeError
+        with pytest.raises((ValueError, TypeError)):
             client.get(url_for(
                 'invenio_oauthclient.authorized',
                 remote_app='test_invalid',
